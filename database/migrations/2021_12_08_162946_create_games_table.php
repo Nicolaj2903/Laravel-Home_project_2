@@ -15,7 +15,11 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('person_id');
+            $table->string('name');
             $table->timestamps();
+
+            $table->foreign('person_id')->references('id')->on('people');
         });
     }
 
